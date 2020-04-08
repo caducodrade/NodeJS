@@ -24,4 +24,4 @@ app.use(routes);
 //imprime no console qua a porta e qual o server que esta rodando aaplicação
 app.listen(port, hostname,()=>{
     console.log(`Servidor rodando na porta ${port} em ${hostname}`);
-})
+});

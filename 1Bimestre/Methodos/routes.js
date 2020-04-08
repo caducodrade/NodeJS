@@ -1,6 +1,9 @@
 const express = require('express');
 const routes = express.Router();
+
 const UserController = require('./Controller/User');
+const ModeloController = require('./Controller/Modelo');
+const EnderecoController = require('./Controller/Endereco');
 
 //Index =Listagem 
 //Show = Visualizar os dados gravados
@@ -33,5 +36,21 @@ routes.put('/users/:id', UserController.update);
 
 //Methodo Delete - Serve para deletar um registro
 routes.delete('/users/:id',UserController.destroy);
+
+
+
+routes.get('/modelo',       ModeloController.index);
+routes.get('/modelo/:id',   ModeloController.show);
+routes.post('/modelo',      ModeloController.store);
+routes.put('/modelo/:id',   ModeloController.update);
+routes.delete('/modelo/:id',ModeloController.destroy);
+
+
+routes.get('/endereco',       EnderecoController.index);
+routes.get('/endereco/:id',   EnderecoController.show);
+routes.post('/endereco',      EnderecoController.store);
+routes.put('/endereco/:id',   EnderecoController.update);
+routes.delete('/endereco/:id',EnderecoController.destroy);
+
 
 module.exports = routes;
