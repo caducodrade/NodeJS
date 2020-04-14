@@ -1,9 +1,15 @@
+//Vendor 
 const express = require('express');
-const routes = express.Router();
+const multer = require('multer')
 
-const UserController = require('./Controller/User');
-const ModeloController = require('./Controller/Modelo');
+//Solicitação do nossos arquivos do MVC e config
+const UploadConfig       = require('./config/upload');
+const UserController     = require('./Controller/User');
+const ModeloController   = require('./Controller/Modelo');
 const EnderecoController = require('./Controller/Endereco');
+
+const routes = express.Router();
+const upload = multer(UploadConfig);
 
 //Index =Listagem 
 //Show = Visualizar os dados gravados
@@ -28,7 +34,7 @@ routes.get('/users/:id', UserController.show);
 //Methodo POST // Create -- Gravação
 //Formulario de login e senha  por exemplo
 // vai enviar o login e a senha no corpo da requisição
-routes.post('/users', UserController.store);
+routes.post('/users', upload.single('thumb'), UserController.store);
 
 //Mehodo PUT é usado para fazer o update para atualizar os dados do banco de dados
 // localhost:3000/users/5

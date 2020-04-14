@@ -18,20 +18,26 @@ module.exports = {
 
   //Store usa o methodo POST para gravar
   async store(req, res){
+ 
+    console.log(req.file);
+
     //passa os dados que veio do post para uma variavel
     const nome = req.body.nome;
     const senha = req.body.senha;
     const email = req.body.email;
     const status = req.body.status;
     const idade = req.body.idade;
+    const thumb = req.file.filename;
     //busca se ja tem algum usuaro com esse email
     let user = await User.findOne({email});
     //compara se houve resultado
     if(!user){
       //se nao houver resultado grava o novo usuario
-      user = await User.create({nome,senha,email,status,idade});
+      user = await User.create({nome,senha,email,status,idade,thumb});
+      return res.json(user);
+    }else{
+      return res.status(400).json({error : "Usuário já cadastrado!"});
     }
-    return res.json(user);
   },
   
   //update pega o id, busca no banco esse registro, alreta ele no controlador e manda gravar
