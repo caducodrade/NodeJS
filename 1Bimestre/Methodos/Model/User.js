@@ -7,5 +7,4 @@ const UserSchema =  new mongoose.Schema({
     thumb : String,
     status : Boolean,
 });
-
 module.exports = mongoose.model('User', UserSchema);

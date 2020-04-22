@@ -64,9 +64,4 @@ module.exports = {
     let Endereco = await Endereco.deleteOne({_id : req.params.id});
     return res.json(Endereco);
   }
-
 };
-
-
-
-

@@ -18,10 +18,7 @@ module.exports = {
 
   //Store usa o methodo POST para gravar
   async store(req, res){
- 
-    console.log(req.file);
-
-    //passa os dados que veio do post para uma variavel
+     //passa os dados que veio do post para uma variavel
     const nome = req.body.nome;
     const senha = req.body.senha;
     const email = req.body.email;
@@ -45,9 +42,12 @@ module.exports = {
     //recupero o registro
     let user = await User.findOne({_id : req.params.id});
     //edito os registros
-    user.nome = "Hericson Ramos Forti";
-    user.email = "sis4web@gmal.com";
-    user.senha = "senha123456";
+    user.nome = req.body.nome;
+    user.email = req.body.email;
+    user.senha = req.body.senha;
+    user.status = req.body.status;
+    user.idade = req.body.idade;
+    user.thumb = req.file.filename;
     //atualiza os dados no banco
     user = await User.update(user);
     return res.json(user);

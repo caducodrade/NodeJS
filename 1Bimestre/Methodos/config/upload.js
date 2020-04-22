@@ -7,7 +7,7 @@ module.exports = {
         filename : (req, file, cb) => {
             let imgExt = path.extname(file.originalname);
             let imgName = path.basename(file.originalname, imgExt);
-            cb(null, `${imgName}-${Date.now()}${imgExt}`);
+            cb(null, `${imgName}-${Date.now("")}${imgExt}`);
         }
     }),
 }; 
