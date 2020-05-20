@@ -49,7 +49,7 @@ module.exports = {
             veiculo.thumb   = req.file.filename;
         }
 
-        veiculo = await Veiculos.updateOne(veiculo);
+        veiculo = await Veiculos.updateOne( veiculo);
         return res.json(veiculo);
     },
     //apaga o registro

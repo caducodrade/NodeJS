@@ -9,6 +9,17 @@ module.exports = {
     return res.json(users);
   },
 
+  async login(req, res){
+    //Busca todos os registross
+    console.log('busca usuario', req.body.email, req.body.senha)
+    let users = await User.findOne({
+                                    email : req.body.email,
+                                    senha : req.body.senha
+                                  });
+                                  console.log(users)
+    return res.json({users});
+  },
+
   //show traz um registro onde o id do registro é igual ao id assado na url
   async show(req, res){
     //Busca um registro no banco

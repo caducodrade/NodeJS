@@ -27,9 +27,10 @@ routes.get('/',function(req, res){
 });
 
 routes.get('/users',          UserController.index);
+routes.post('/users/login',   UserController.login);
 routes.get('/users/:id',      UserController.show);
-routes.post('/users',    upload.single('thumb'),UserController.store);
-routes.put('/users/:id', upload.single('thumb'),UserController.update);
+routes.post('/users',         upload.single('thumb'),UserController.store);
+routes.put('/users/:id',      upload.single('thumb'),UserController.update);
 routes.delete('/users/:id',   UserController.destroy);
 
 routes.get('/modelo',         ModeloController.index);
