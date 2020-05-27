@@ -13,8 +13,8 @@ module.exports = {
     //Busca todos os registross
     console.log('busca usuario', req.body.email, req.body.senha)
     let users = await User.findOne({
-                                    email : req.body.email,
-                                    senha : req.body.senha
+                                    email : req.body.email.trim(),
+                                    senha : req.body.senha.trim()
                                   });
                                   console.log(users)
     return res.json({users});
