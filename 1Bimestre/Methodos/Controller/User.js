@@ -24,6 +24,7 @@ module.exports = {
   async show(req, res){
     //Busca um registro no banco
     let user = await User.findOne({_id : req.params.id});
+    console.log
     return res.json(user);
   },
 
@@ -58,7 +59,7 @@ module.exports = {
     user.senha = req.body.senha;
     user.status = req.body.status;
     user.idade = req.body.idade;
-    user.thumb = req.file.filename;
+    //user.thumb = req.file.filename;
     //atualiza os dados no banco
     user = await User.update(user);
     return res.json(user);
